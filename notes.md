@@ -6,8 +6,8 @@
 
 ## Big-O Notation
 - Notation for a program time complexity  
-      ![alt text](image.png)
-      *Reference:* https://www.bigocheatsheet.com/ 
+![Big-O Notation](./assets/big-o-notation.png)
+- *Reference:* https://www.bigocheatsheet.com/ 
 
 ## Array 
 - Organized data in row or columns.
