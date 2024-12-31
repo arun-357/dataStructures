@@ -11,14 +11,14 @@
 
 ## Array 
 - Organized data in row or columns.
-- Leet Code Problems: 
-      - Two Sum
-      - Best Time to Buy and Sell Stock
-      - Contains Duplicate
-      - Product of Array Except Self
-      - Maximum Sub-array
-      - Maximum Product Sub-array
-      - Find Minimum in Rotated Sorted Array
-      - Search in Rotated Sorted Array
-      - 3 Sum
-      - Container With Most Water
+### Leet Code Problems:
+- Two Sum
+- Best Time to Buy and Sell Stock
+- Contains Duplicate
+- Product of Array Except Self
+- Maximum Sub-array
+- Maximum Product Sub-array
+- Find Minimum in Rotated Sorted Array
+- Search in Rotated Sorted Array
+- 3 Sum
+- Container With Most Water
