@@ -24,3 +24,7 @@
 - Container With Most Water
 ### Kadane's Algorithm
 - Kadane's Algorithm is a dynamic programming technique used to find the maximum subarray sum in an array of numbers. The algorithm maintains two variables: max_current represents the maximum sum ending at the current position, and max_global represents the maximum subarray sum encountered so far. At each iteration, it updates max_current to include the current element or start a new subarray if the current element is larger than the accumulated sum. The max_global is updated if max_current surpasses its value.
+### Prefix / Suffix Algorithm 
+- A prefix algorithm computes cumulative results for elements of a sequence up to each index. It processes from left to right, storing intermediate results for use in later calculations.
+- Use Cases: Compute running sums or products.
+![alt text](./assets/prefix-sufix.png)
