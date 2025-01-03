@@ -1,6 +1,6 @@
 # Data Structures
 
-This file provides a basic understanding of data structures and coding examples for each of them. Note that this document will not cover all data structures, but will focus on some of the most commonly used ones.
+This file is created as part of my journey to master Data Structures and Algorithms (DSA) for interview preparation. It provides a basic understanding of various data structures along with coding examples for each. While it does not cover all data structures, it focuses on some of the most commonly used ones that are essential for technical interviews.
 
 ## What is a Data Structure?
 
