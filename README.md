@@ -48,3 +48,33 @@ Use Cases: Compute running sums or products.
 - If the count becomes 0, it means that the current candidate is no longer a potential majority element. In this case, a new candidate is chosen from the remaining elements.
 - The algorithm continues this process until it has traversed the entire array.
 - The final value of the candidate variable will hold the majority element.
+
+### Sorting 
+
+#### Count Sort
+```python
+def count_sort(arr):
+      max_val = max(arr)
+      count = {}
+      for x in arr:
+            count[x] = count.get(x, 0) + 1
+      idx = 0
+      for num in range(max_val):
+            freq = count.get(num, 0)
+            arr[idx: idx+freq] = [num] * freq
+            idx += freq 
+
+```
+
+#### Quick Sort 
+```python
+def quick_sort(arr):
+      if len(arr) < 1:
+            return arr
+      else:
+            pivot = arr[len(arr) // 2]
+            first = [x for x in arr if x < pivot]
+            second = [x for x in arr if x == pivot]
+            third = [x for x in arr if x > pivot]
+            return quick_sort(first) + second + quick_sort(third)
+```
