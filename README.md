@@ -78,3 +78,29 @@ def quick_sort(arr):
             third = [x for x in arr if x > pivot]
             return quick_sort(first) + second + quick_sort(third)
 ```
+
+### Back Tracking Recursively 
+
+Backtracking is a general algorithm that can be used to find one or multiple solutions to some computational problems. LeetCode Combination Sum beautifully display this.
+
+```python
+def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+
+        def make_combination(idx, comb, total):
+            if total == target:
+                res.append(comb[:])
+                return 
+            
+            if total > target or idx >= len(candidates):
+                return 
+
+            comb.append(candidates[idx])
+            make_combination(idx, comb, total + candidates[idx])
+            comb.pop()
+            make_combination(idx+1, comb, total)
+
+            return res
+        
+        return make_combination(0, [], 0)
+```
