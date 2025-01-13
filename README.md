@@ -104,3 +104,16 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
         return make_combination(0, [], 0)
 ```
+
+## Strings
+
+### Two Pointers (Reverse a list)
+```python 
+      nums = [1,2,3,4,5,6,7,8,9]
+      start = 0
+      end = len(nums) - 1 
+      while start < end:
+                nums[start], nums[end] = nums[end], nums[start]
+                start += 1
+                end -= 1
+```
