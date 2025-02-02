@@ -39,6 +39,17 @@ Kadane's Algorithm is a dynamic programming technique used to find the maximum s
 A prefix algorithm computes cumulative results for elements of a sequence up to each index. It processes from left to right, storing intermediate results for use in later calculations.  
 Use Cases: Compute running sums or products.  
 ![Prefix/Suffix Algorithm](./assets/prefix-sufix.png)
+```python 
+      def productExceptSelf(self, nums: List[int]) -> List[int]:
+        ans, suf, pre = [1]*len(nums), 1, 1
+        for i in range(len(nums)):
+            ans[i] *= pre
+            pre *= nums[i]
+            ans[-1-i] *= suf
+            suf *= nums[-1-i]
+        
+        return ans
+```
 
 ### Moore Voting Algorithm
 - The algorithm starts by assuming the first element as the majority candidate and sets the count to 1.
@@ -82,6 +93,9 @@ def quick_sort(arr):
 ### Back Tracking Recursively 
 
 Backtracking is a general algorithm that can be used to find one or multiple solutions to some computational problems. LeetCode Combination Sum beautifully display this.
+
+Time Complexity: O(2^n) in the worst case
+Space Complexity: O(t/d), where t is the target and d is the smallest candidate, representing the depth of the recursion.
 
 ```python
 def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
