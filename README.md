@@ -131,3 +131,82 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
                 start += 1
                 end -= 1
 ```
+
+## Linked Lists
+```python 
+      # merge
+      def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode()
+        current = dummy
+
+        while list1 and list2:
+            if list1.val > list2.val:
+                current.next = list2
+                list2 = list2.next
+            else:
+                current.next = list1
+                list1 = list1.next
+            current = current.next
+
+        if list1:
+            current.next = list1 
+        else: 
+            current.next = list2
+
+        return dummy.next 
+
+      # List Cycle (Slow and Fast pointer)
+
+      def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow = head
+        fast = head 
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                return True           
+        return False
+
+      # Reverse a linked list
+      def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node = None
+
+        while head:
+            temp = head.next
+            head.next = node
+            node = head
+            head = temp
+        
+       return node
+
+      # Remove Duplicates 
+      def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        res = head
+
+        while head and head.next:
+            if head.val == head.next.val:
+                head.next = head.next.next
+            else:
+                head = head.next
+        
+        return res
+
+      # Remove Nth Node from End
+
+      def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        res = ListNode(0, head)
+        dummy = res
+
+        for _ in range(n):
+            head = head.next
+
+        while head:
+            head = head.next
+            dummy = dummy.next
+
+        dummy.next = dummy.next.next
+
+        return res.next
+
+```
