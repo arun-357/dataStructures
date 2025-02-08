@@ -209,4 +209,11 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 
         return res.next
 
+    def remove_last_node(head):
+        while head.next.next:
+            head = head.next
+        head.next = None
+
+    
+
 ```
