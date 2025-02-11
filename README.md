@@ -99,24 +99,42 @@ Space Complexity: O(t/d), where t is the target and d is the smallest candidate,
 
 ```python
 def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
+    res = []
 
-        def make_combination(idx, comb, total):
-            if total == target:
-                res.append(comb[:])
-                return 
-            
-            if total > target or idx >= len(candidates):
-                return 
-
-            comb.append(candidates[idx])
-            make_combination(idx, comb, total + candidates[idx])
-            comb.pop()
-            make_combination(idx+1, comb, total)
-
-            return res
+    def make_combination(idx, comb, total):
+        if total == target:
+            res.append(comb[:])
+            return 
         
-        return make_combination(0, [], 0)
+        if total > target or idx >= len(candidates):
+            return 
+
+        comb.append(candidates[idx])
+        make_combination(idx, comb, total + candidates[idx])
+        comb.pop()
+        make_combination(idx+1, comb, total)
+
+        return res
+    
+    return make_combination(0, [], 0)
+    
+def generateParenthesis(self, n: int) -> List[str]:
+    res = []
+
+    def dfs(left, right, p):
+        if len(p) == n * 2:
+            res.append(p)
+            return
+        
+        if left < n:
+            dfs(left + 1, right, p + '(')
+        
+        if right < left :
+            dfs(left, right + 1, p + ')')
+    
+    dfs(0, 0, '')
+
+    return res
 ```
 
 ## Strings
@@ -127,9 +145,9 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
       start = 0
       end = len(nums) - 1 
       while start < end:
-                nums[start], nums[end] = nums[end], nums[start]
-                start += 1
-                end -= 1
+        nums[start], nums[end] = nums[end], nums[start]
+        start += 1
+        end -= 1
 ```
 
 ## Linked Lists
@@ -213,7 +231,5 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         while head.next.next:
             head = head.next
         head.next = None
-
-    
 
 ```
