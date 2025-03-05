@@ -65,29 +65,55 @@ Use Cases: Compute running sums or products.
 #### Count Sort
 ```python
 def count_sort(arr):
-      max_val = max(arr)
-      count = {}
-      for x in arr:
-            count[x] = count.get(x, 0) + 1
-      idx = 0
-      for num in range(max_val):
-            freq = count.get(num, 0)
-            arr[idx: idx+freq] = [num] * freq
-            idx += freq 
+    max_val = max(arr)
+    count = {}
+    for x in arr:
+        count[x] = count.get(x, 0) + 1
+    idx = 0
+    for num in range(max_val):
+        freq = count.get(num, 0)
+        arr[idx: idx+freq] = [num] * freq
+        idx += freq 
 
 ```
 
 #### Quick Sort 
 ```python
 def quick_sort(arr):
-      if len(arr) < 1:
-            return arr
-      else:
-            pivot = arr[len(arr) // 2]
-            first = [x for x in arr if x < pivot]
-            second = [x for x in arr if x == pivot]
-            third = [x for x in arr if x > pivot]
-            return quick_sort(first) + second + quick_sort(third)
+    if len(arr) < 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2]
+        first = [x for x in arr if x < pivot]
+        second = [x for x in arr if x == pivot]
+        third = [x for x in arr if x > pivot]
+        return quick_sort(first) + second + quick_sort(third)
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = len(arr) // 2
+    first = arr[:mid]
+    second = arr[mid:]
+
+    return merge(first, second)
+
+def merge(first, second):
+    i, j = 0 
+    sorted_arr = []
+
+    while i < len(first) and j < len(second):
+        if first[i] < second[j]:
+            sorted_arr.append(first[i])
+            i+=1
+        else:
+            sorted_arr.append(second[j])
+            j+=1
+    sorted_arr.extend(first[i:])
+    sorted_arr.extend(second[j:])
+    
+    return sorted_arr
+
 ```
 
 ### Back Tracking Recursively 
@@ -141,10 +167,10 @@ def generateParenthesis(self, n: int) -> List[str]:
 
 ### Two Pointers (Reverse a list)
 ```python 
-      nums = [1,2,3,4,5,6,7,8,9]
-      start = 0
-      end = len(nums) - 1 
-      while start < end:
+    nums = [1,2,3,4,5,6,7,8,9]
+    start = 0
+    end = len(nums) - 1 
+    while start < end:
         nums[start], nums[end] = nums[end], nums[start]
         start += 1
         end -= 1
@@ -234,6 +260,7 @@ def generateParenthesis(self, n: int) -> List[str]:
 ```
 
 ## Binary Search
+"When can we use binary search?", my answer is that, If we can discover some kind of monotonicity, for example, if condition(k) is True then condition(k + 1) is True, then we can consider binary search.
 ```python
     def binary_search(array) -> int:
         def condition(value) -> bool:
