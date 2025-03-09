@@ -272,6 +272,21 @@ def generateParenthesis(self, n: int) -> List[str]:
         while head.next.next:
             head = head.next
         head.next = None
+
+    def findDuplicate(self, nums: List[int]) -> int:
+        slow, fast = 0, 0
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+        
+        slow2 = 0
+        while True:
+            slow = nums[slow]
+            slow2 = nums[slow2]
+            if slow == slow2:
+                return slow
 ```
 
 ## Binary Search
@@ -289,4 +304,27 @@ def generateParenthesis(self, n: int) -> List[str]:
             else:
                 left = mid + 1
         return left 
+```
+
+## Index marking 
+Will work for number from [1 to n]
+```python
+    def findDuplicates(nums):
+        duplicates = []
+        
+        for num in nums:
+            index = abs(num) - 1  
+            
+            # If the number at index is already negative, it's a duplicate
+            if nums[index] < 0:
+                duplicates.append(abs(num))
+            else:
+                # Mark as visited
+                nums[index] = -nums[index]
+        
+        # Restore input (Optional: if required to keep original array unchanged)
+        for i in range(len(nums)):
+            nums[i] = abs(nums[i])
+        
+        return duplicates 
 ```
