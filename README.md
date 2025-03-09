@@ -59,6 +59,21 @@ Use Cases: Compute running sums or products.
 - If the count becomes 0, it means that the current candidate is no longer a potential majority element. In this case, a new candidate is chosen from the remaining elements.
 - The algorithm continues this process until it has traversed the entire array.
 - The final value of the candidate variable will hold the majority element.
+```python 
+def majorityElement(nums):
+    # Step 1: Find candidate
+    candidate, count = None, 0
+
+    for num in nums:
+        if count == 0:
+            candidate = num
+        count += (1 if num == candidate else -1)
+
+    # Step 2: Verify if candidate is majority
+    if nums.count(candidate) > len(nums) // 2:
+        return candidate
+    return -1
+```
 
 ### Sorting 
 
