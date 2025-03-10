@@ -328,3 +328,107 @@ Will work for number from [1 to n]
         
         return duplicates 
 ```
+
+# BFS and DFS Algorithms
+
+This repository contains implementations and explanations for Breadth-First Search (BFS) and Depth-First Search (DFS), commonly used in graph traversal problems on platforms like LeetCode.
+
+## Overview
+### Breadth-First Search (BFS)
+- Explores all neighbors at the current level before moving to the next level.
+- Utilizes a **queue** (FIFO) for traversal.
+- Best for **finding shortest paths in unweighted graphs** and **level-order traversal**.
+
+### Depth-First Search (DFS)
+- Explores as far as possible along one branch before backtracking.
+- Can be implemented **recursively** or **iteratively (using a stack)**.
+- Best for **cycle detection, topological sorting, and backtracking problems**.
+
+## Implementations
+### BFS Implementation (Using a Queue)
+```python
+from collections import deque
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    visited.add(start)
+    
+    while queue:
+        node = queue.popleft()
+        print(node, end=' ')  # Process node
+        
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+```
+
+### DFS Implementation (Recursive)
+```python
+def dfs(graph, node, visited=None):
+    if visited is None:
+        visited = set()
+    
+    visited.add(node)
+    print(node, end=' ')  # Process node
+    
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
+```
+
+### DFS Implementation (Iterative Using a Stack)
+```python
+def dfs_iterative(graph, start):
+    visited = set()
+    stack = [start]
+    
+    while stack:
+        node = stack.pop()
+        if node not in visited:
+            print(node, end=' ')  # Process node
+            visited.add(node)
+            stack.extend(reversed(graph[node]))  # Reverse to maintain correct order
+```
+
+## Example Graph Representation
+```python
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F', 'G'],
+    'D': ['B'],
+    'E': ['B', 'H'],
+    'F': ['C'],
+    'G': ['C'],
+    'H': ['E']
+}
+```
+
+### Sample Runs
+```python
+print("BFS Traversal:")
+bfs(graph, 'A')
+
+print("\nDFS Recursive Traversal:")
+dfs(graph, 'A')
+
+print("\nDFS Iterative Traversal:")
+dfs_iterative(graph, 'A')
+```
+
+## Complexity Analysis
+| Algorithm | Data Structure | Best Use Cases | Time Complexity | Space Complexity |
+|-----------|---------------|---------------|----------------|----------------|
+| BFS | Queue (Deque) | Shortest Path, Level-order Traversal | O(V + E) | O(V) |
+| DFS (Recursive) | Recursion (Call Stack) | Backtracking, Cycle Detection | O(V + E) | O(V) |
+| DFS (Iterative) | Stack | Topological Sorting, Connected Components | O(V + E) | O(V) |
+
+## How to Run
+1. Clone the repository.
+2. Run the Python script containing BFS and DFS implementations.
+
+```sh
+python bfs_dfs.py
+```
