@@ -329,23 +329,19 @@ Will work for number from [1 to n]
         return duplicates 
 ```
 
-# BFS and DFS Algorithms
+# Breadth-First Search (BFS) and Depth-First Search (DFS) Documentation
 
-This repository contains implementations and explanations for Breadth-First Search (BFS) and Depth-First Search (DFS), commonly used in graph traversal problems on platforms like LeetCode.
+## Breadth-First Search (BFS)
+### Overview:
+BFS is an algorithm for traversing or searching tree or graph data structures. It explores all the vertices at the present depth level before moving on to the nodes at the next depth level.
 
-## Overview
-### Breadth-First Search (BFS)
-- Explores all neighbors at the current level before moving to the next level.
-- Utilizes a **queue** (FIFO) for traversal.
-- Best for **finding shortest paths in unweighted graphs** and **level-order traversal**.
+### When to Use BFS:
+- Finding the shortest path in an unweighted graph.
+- Searching for the nearest element satisfying a condition.
+- Problems requiring level-order traversal.
 
-### Depth-First Search (DFS)
-- Explores as far as possible along one branch before backtracking.
-- Can be implemented **recursively** or **iteratively (using a stack)**.
-- Best for **cycle detection, topological sorting, and backtracking problems**.
-
-## Implementations
-### BFS Implementation (Using a Queue)
+### Implementation:
+#### Using a Queue (Iterative Approach):
 ```python
 from collections import deque
 
@@ -364,7 +360,25 @@ def bfs(graph, start):
                 queue.append(neighbor)
 ```
 
-### DFS Implementation (Recursive)
+### Time and Space Complexity:
+- **Time Complexity:** O(V + E) (where V is vertices and E is edges)
+- **Space Complexity:** O(V) (for the queue and visited set)
+
+---
+
+## Depth-First Search (DFS)
+### Overview:
+DFS is an algorithm for traversing a graph by exploring as far as possible along each branch before backtracking.
+
+### When to Use DFS:
+- Detecting cycles in a graph.
+- Finding connected components.
+- Solving maze-like problems (backtracking).
+- Topological sorting in Directed Acyclic Graphs (DAG).
+- Explore all possible paths in a graph.
+
+### Implementation:
+#### Using Recursion:
 ```python
 def dfs(graph, node, visited=None):
     if visited is None:
@@ -378,7 +392,7 @@ def dfs(graph, node, visited=None):
             dfs(graph, neighbor, visited)
 ```
 
-### DFS Implementation (Iterative Using a Stack)
+#### Using a Stack (Iterative Approach):
 ```python
 def dfs_iterative(graph, start):
     visited = set()
@@ -392,7 +406,13 @@ def dfs_iterative(graph, start):
             stack.extend(reversed(graph[node]))  # Reverse to maintain correct order
 ```
 
-## Example Graph Representation
+### Time and Space Complexity:
+- **Time Complexity:** O(V + E)
+- **Space Complexity:** O(V) (for recursive stack or explicit stack)
+
+---
+
+## Example Graph Representation:
 ```python
 graph = {
     'A': ['B', 'C'],
@@ -406,7 +426,7 @@ graph = {
 }
 ```
 
-### Sample Runs
+### Sample Runs:
 ```python
 print("BFS Traversal:")
 bfs(graph, 'A')
@@ -418,17 +438,21 @@ print("\nDFS Iterative Traversal:")
 dfs_iterative(graph, 'A')
 ```
 
-## Complexity Analysis
-| Algorithm | Data Structure | Best Use Cases | Time Complexity | Space Complexity |
-|-----------|---------------|---------------|----------------|----------------|
+---
+
+## Summary:
+| Algorithm | Data Structure Used | Best Use Cases | Time Complexity | Space Complexity |
+|-----------|--------------------|---------------|----------------|----------------|
 | BFS | Queue (Deque) | Shortest Path, Level-order Traversal | O(V + E) | O(V) |
 | DFS (Recursive) | Recursion (Call Stack) | Backtracking, Cycle Detection | O(V + E) | O(V) |
 | DFS (Iterative) | Stack | Topological Sorting, Connected Components | O(V + E) | O(V) |
 
-## How to Run
-1. Clone the repository.
-2. Run the Python script containing BFS and DFS implementations.
+---
 
-```sh
-python bfs_dfs.py
-```
+## Tips for LeetCode
+- Choose BFS when:
+  - You need the shortest path or level-order traversal.
+  - The problem involves a grid or tree with a clear "distance" metric.
+- Choose DFS when:
+  - You need to explore all possibilities (e.g., backtracking).
+  - The problem involves detecting cycles or connected components.
