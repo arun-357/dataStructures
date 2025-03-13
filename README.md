@@ -456,3 +456,55 @@ dfs_iterative(graph, 'A')
 - Choose DFS when:
   - You need to explore all possibilities (e.g., backtracking).
   - The problem involves detecting cycles or connected components.
+
+### Preorder Serialization with Delimiters
+```python 
+class Solution(object):
+    def isSubtree(self, s, t):
+        def serialize(root):
+            if not root:
+                return "$"
+            return "^" + str(root.val) + "#" + serialize(root.left) + serialize(root.right)
+        
+        s_str = serialize(s)
+        t_str = serialize(t)
+        
+        return t_str in s_str
+    
+    ##### OR #####
+    def kmpSearch(text, pattern):
+        """ Knuth-Morris-Pratt (KMP) string matching algorithm """
+        lps = computeLPS(pattern)
+        i, j = 0, 0
+        
+        while i < len(text):
+            if text[i] == pattern[j]:
+                i += 1
+                j += 1
+                if j == len(pattern):
+                    return True  # Pattern found
+            elif j > 0:
+                j = lps[j - 1]
+            else:
+                i += 1
+
+        return False
+
+    def computeLPS(pattern):
+        """ Compute Longest Prefix Suffix (LPS) array for KMP """
+        lps = [0] * len(pattern)
+        length, i = 0, 1
+        
+        while i < len(pattern):
+            if pattern[i] == pattern[length]:
+                length += 1
+                lps[i] = length
+                i += 1
+            elif length > 0:
+                length = lps[length - 1]
+            else:
+                i += 1
+
+        return lps
+
+```
