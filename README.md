@@ -508,3 +508,16 @@ class Solution(object):
         return lps
 
 ```
+
+## Circular Traversal 
+```python 
+def circular_traversal(nums):
+    n = len(nums)
+    result = []
+    
+    for i in range(n):
+        next_idx = (i + 1) % n  # Wrap around using modulo
+        result.append(nums[next_idx])
+    
+    return result
+```
